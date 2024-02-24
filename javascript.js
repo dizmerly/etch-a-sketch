@@ -10,8 +10,11 @@ sketchContainer.setAttribute("style", "display:flex; justify-content: center; ma
 
 const sketchWindow = document.createElement("div");
 sketchWindow.classList.add("sketch");
-sketchWindow.setAttribute("style", "background-color: lightblue; width: 400px; height: 400px; display:flex; flex-wrap: wrap;");
+sketchWindow.setAttribute("style", "background-color: lightblue; width: 400px; height: 400px; display: flex; flex-wrap: wrap;");
 sketchContainer.appendChild(sketchWindow);
+
+
+
 
 const setGridBtn = document.createElement("button");
 const btnContainer = document.createElement("div");
@@ -22,20 +25,23 @@ body.insertBefore(btnContainer, sketchContainer);
 btnContainer.appendChild(setGridBtn);
 
 
-let setGrid = (gridNum) => {
+let setGrid = (gridNum) => { 
     
-    for(let i = 0; i < gridNum; i++){
+    for(let i = 0; i < Math.pow(gridNum, 2); i++){
         let grid = document.createElement("div");
-        let gridWidth = (sketchWindow.offsetWidth / (gridNum / Math.round(Math.sqrt(gridNum)))) - 2;
-
-        grid.setAttribute("style" , `background-color: blue; width: ${gridWidth}px; height: ${gridWidth}px;
-         border: 1px solid lightblue; margin: 0px; padding: 0px;`);
+        let gridWidth = 100 / gridNum;
+        grid.setAttribute("style" , `background-color: blue; width: ${gridWidth}%; height: ${gridWidth}%;
+         border: 0px lightblue; margin: 0px; padding: 0px;`);
 
         sketchWindow.appendChild(grid);
     }
     
-    
+
 };
 
-setGrid(81);
+
+
+
+
+setGrid(32);
 
