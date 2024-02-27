@@ -35,7 +35,6 @@ let setGrid = (gridNum) => {
         let gridWidth = 100 / gridNum;  
         grid.addEventListener('mousemove', (e) => {
             grid.style.backgroundColor = "black";
-            console.log(e);
                 
         });
         grid.setAttribute("style" , `background-color: white; width: ${gridWidth}%; height: ${gridWidth}%;
@@ -49,17 +48,21 @@ let setGrid = (gridNum) => {
 
 };
 
-setGrid(4);
+setGrid(16);
 
 
 
 const setGridBtn = document.createElement("button");
+const resetGridBtn = document.createElement("button");
 const btnContainer = document.createElement("div");
 setGridBtn.textContent = "Set Grid";
-setGridBtn.setAttribute("style", "background-color: lightyellow; padding: 20px; width 200px; height 100px; border-radius:10px;")
-btnContainer.setAttribute("style", "display:flex; justify-content: center; margin: 0px;")
+resetGridBtn.textContent = "Reset Grid";
+setGridBtn.setAttribute("style", "background-color: pink; padding: 20px; width 200px; height 100px; border-radius:10px;")
+resetGridBtn.setAttribute("style", "background-color: pink; padding: 20px; width 200px; height 100px; border-radius:10px;")
+btnContainer.setAttribute("style", "display:flex; justify-content: center; margin-top: 40px; gap: 40px;")
 body.insertBefore(btnContainer, sketchContainer);   
 btnContainer.appendChild(setGridBtn);
+btnContainer.appendChild(resetGridBtn);
 
 
 setGridBtn.addEventListener('click', (event) => {
@@ -72,6 +75,12 @@ setGridBtn.addEventListener('click', (event) => {
         return alert("Please enter an integer for grid size.");
     }
     
+});
+
+resetGridBtn.addEventListener('click', (e) => {
+    let grids = document.querySelectorAll("#grid");
+    grids.forEach((grid) => grid.style.backgroundColor = "white");
+
 });
 
 
