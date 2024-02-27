@@ -7,10 +7,10 @@ body.appendChild(sketchContainer);
 sketchContainer.setAttribute("style", "display:flex; justify-content: center; margin: 80px 0px");
 
 
-
+//Create window to draw grids inside of 
 const sketchWindow = document.createElement("div");
 sketchWindow.classList.add("sketch");
-sketchWindow.setAttribute("style", "background-color: lightblue; width: 400px; height: 400px; display: flex; flex-wrap: wrap; padding:0px; margin:0px");
+sketchWindow.setAttribute("style", "background-color: lightblue; width: 400px; height: 400px; display: flex; flex-wrap: wrap; padding:0px; margin:0px; border: 1px solid lightblue");
 sketchContainer.appendChild(sketchWindow);
 
 
@@ -20,7 +20,7 @@ sketchContainer.appendChild(sketchWindow);
 //Function for creating grid on sketch window
 let setGrid = (gridNum) => { 
     
-    //Clear Function
+    //Clear sketching window of grids
 
     if(gridNum == 0){
         while(sketchWindow.firstChild){
@@ -32,10 +32,15 @@ let setGrid = (gridNum) => {
     for(let i = 0; i < Math.pow(gridNum, 2); i++){
         let grid = document.createElement("div");
         grid.setAttribute("id", "grid");
-        let gridWidth = 100 / gridNum;
-        grid.setAttribute("style" , `background-color: blue; width: ${gridWidth}%; height: ${gridWidth}%;
-        box-shadow: inset 0 0 1px white;; margin: 0px; padding: 0px;`);
-
+        let gridWidth = 100 / gridNum;  
+        grid.addEventListener('mousemove', (e) => {
+            grid.style.backgroundColor = "black";
+            console.log(e);
+                
+        });
+        grid.setAttribute("style" , `background-color: white; width: ${gridWidth}%; height: ${gridWidth}%;
+        box-shadow: inset 0 0 1px black;; margin: 0px; padding: 0px;`);
+        
         sketchWindow.appendChild(grid);
     }
 
@@ -43,6 +48,8 @@ let setGrid = (gridNum) => {
     
 
 };
+
+setGrid(4);
 
 
 
@@ -66,5 +73,8 @@ setGridBtn.addEventListener('click', (event) => {
     }
     
 });
+
+
+
 
 console.log(Number.isInteger(10));
